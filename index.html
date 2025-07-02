@@ -1,13 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/cat-svg.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Kittypedia</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <h1>Kittypedia</h1>
+      <div class="menu"></div>
+    </header>
+    <main>
+      <div id="resultado"></div>
+
+      <section class="filter">
+        <form action="">
+          Filter by
+
+          <label for="breed"
+            >Breeds
+            <select name="breed" id="breed">
+              <option value="">Select a breed</option>
+            </select>
+          </label>
+          <label for="order">
+            Upload date
+            <select name="order" id="order">
+              <option>Select an option</option>
+              <option value="ASC">Ascending</option>
+              <option value="DESC">Descending</option>
+              <option value="RAND">Random</option>
+            </select>
+          </label>
+        </form>
+      </section>
+      <div class="main-content">
+        <button class="genBtn">Generate 10 random</button>
+        <div class="loader hidden"></div>
+        <section class="data"></section>
+        <button class="genBtn">Generate 10 random</button>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; Ningún derecho reservado. Bogado Nicolas.</p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
