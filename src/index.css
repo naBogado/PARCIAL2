@@ -68,6 +68,9 @@
     display: block;
     margin: 0.3rem 0;
   }
+  .main-content button {
+    padding: 0.5rem;
+  }
   .data {
     margin: 0 1rem;
   }
