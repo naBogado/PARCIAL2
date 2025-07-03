@@ -4,7 +4,6 @@ export default async function handler(req, res) {
 
   const params = new URLSearchParams(req.query);
   params.append("api_key", apiKey);
-  console.log(params);
 
   const fullUrl = `${baseUrl}?${params.toString()}`;
 

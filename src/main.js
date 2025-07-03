@@ -21,17 +21,17 @@ $genBtn.forEach((btn) => {
 //Funcionalidad de los filtros
 $breedSelect.addEventListener("change", (event) => {
   const val = event.target.value;
-  const url = filtrarBusqueda(FILTERS.RAZA, val);
-  console.log(url);
+  const filtros = filtrarBusqueda(FILTERS.RAZA, val);
+  console.log(filtros);
 
-  const queryString = new URLSearchParams(url).toString();
+  const queryString = new URLSearchParams(filtros).toString();
   console.log(queryString);
 
-  const urlFiltro = `/api/cat?${queryString}`;
+  const url = ('/api/data.js' += queryString);
 
-  console.log(urlFiltro);
+  console.log(url);
 
-  cargarDatosYMostrar(queryString);
+  cargarDatosYMostrar(url);
 });
 $orderSelect.addEventListener("change", (event) => {
   const val = event.target.value;
