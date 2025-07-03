@@ -27,7 +27,7 @@ $breedSelect.addEventListener("change", (event) => {
   const queryString = new URLSearchParams(filtros).toString();
   console.log(queryString);
 
-  const url = ("/api/data.js" += queryString);
+  const url = `/api/data.js${queryString}`;
 
   console.log(url);
 
