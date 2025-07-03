@@ -35,14 +35,16 @@ $breedSelect.addEventListener("change", (event) => {
 });
 $orderSelect.addEventListener("change", (event) => {
   const val = event.target.value;
-  const url = filtrarBusqueda(FILTERS.ORDE, val);
+  const filtros = filtrarBusqueda(FILTERS.ORDE, val);
+  console.log(filtros);
+  const queryString = new URLSearchParams(filtros).toString();
+  console.log(queryString);
+
+  const url = `/api/data.js?${queryString}`;
+
   console.log(url);
 
-  const queryString = new URLSearchParams(url).toString();
-  const urlFiltro = `/api/cat?${queryString}`;
-  console.log(urlFiltro);
-
-  cargarDatosYMostrar(urlFiltro);
+  cargarDatosYMostrar(url);
 });
 
 function llenarContainer(data) {
