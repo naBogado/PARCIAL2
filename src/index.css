@@ -6,11 +6,13 @@
   background-color: var(--secondary-color);
 }
 .filter label {
+  display: inline-block;
   font-size: 1.1rem;
+  padding: 0 0.5rem;
 }
 .filter select {
-  width: 8rem;
-  height: 1.3rem;
+  width: 10rem;
+  height: 1.45rem;
 }
 
 .main-content {
@@ -20,23 +22,9 @@
   align-items: center;
   margin: 0.8rem 0;
 }
-.genBtn {
-  margin: 0.5rem 0;
-  font-weight: 600;
-  width: 8rem;
-  height: 2.3rem;
-  border-radius: 14px;
-  color: var(--font-color);
-  text-shadow: 1px 1px 4px var(--primary-color);
-  background-color: var(--secondary-color);
-  border: 1px solid var(--dark-color);
-  transition: all 0.2s ease-in-out;
-}
-.genBtn:hover {
-  transform: scale(105%) translateY(-2px);
-}
+
 .data {
-  min-height: 46vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,11 +32,12 @@
   padding: 0.5rem 0;
 }
 .data article {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
   box-shadow: 0px 0px 10px var(--dark-color);
   padding: 16px;
   display: grid;
-  grid-template-areas: "img info";
+  grid-template-areas: "img info info";
+  align-items: center;
   gap: 1rem;
   border-radius: 8px;
 }
@@ -58,6 +47,79 @@
   max-height: 22rem;
 }
 .data article .info {
-  line-height: 1.6rem;
   grid-area: info;
+}
+
+/* MEDIA QUERIES */
+/* Mobile */
+@media (360px > width) {
+  .data article img {
+    width: 14rem;
+  }
+}
+@media (600px > width) {
+  main {
+    margin: 0;
+  }
+  .filter {
+    border-radius: unset;
+  }
+  .filter label {
+    display: block;
+    margin: 0.3rem 0;
+  }
+  .data {
+    margin: 0 1rem;
+  }
+  .data article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .data article h3 {
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+  .data article img {
+    max-width: 20rem;
+    max-height: 24rem;
+  }
+  .data article #info {
+    margin-top: 0.4rem;
+    text-align: center;
+  }
+}
+/* Desktop */
+@media (width > 1000px) {
+  .filter {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (width > 1600px) {
+  .filter label {
+    font-size: 2rem;
+  }
+  .filter label select {
+    height: 2rem;
+    width: 14rem;
+    font-size: 1.15rem;
+  }
+  .genBtn {
+    width: 15rem;
+    height: 4rem;
+    font-size: 1.5rem;
+  }
+  .data article img {
+    width: 30rem;
+    max-height: 40rem;
+  }
+  .data {
+    margin: 0 1rem;
+    gap: 2rem;
+  }
+  footer {
+    font-size: 1.25rem;
+  }
 }

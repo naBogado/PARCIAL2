@@ -15,6 +15,13 @@
   padding: 0;
   box-sizing: content-box;
 }
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--background-color);
@@ -22,15 +29,69 @@ body {
 
   font-size: var(--desktop-f-size);
   color: var(--font-color);
+
+  line-height: 1.6rem;
 }
 header {
   background-color: var(--primary-color);
   text-align: center;
   padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header h1 {
+  color: #f0f0f0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  margin-bottom: 0.8rem;
+}
+.menu {
+  margin-top: 1rem;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.menu li {
+  border-radius: 6px;
+}
+.menu a {
+  padding: 0 0.8rem;
+  text-decoration: none;
+  color: var(--font-color);
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+.menu .active {
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+}
+.menu li:hover {
+  transform: scale(103%) translateY(-1px);
+  box-shadow: 0 0 8px var(--dark-color);
 }
 main {
+  min-height: 90vh;
   margin: 0.5rem;
 }
+button {
+  margin: 0.5rem 0;
+  font-weight: 600;
+  width: 8rem;
+  height: 2.3rem;
+  border-radius: 14px;
+  color: var(--font-color);
+  text-shadow: 1px 1px 4px var(--primary-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--dark-color);
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  transform: scale(105%) translateY(-2px);
+  cursor: pointer;
+}
+
 footer {
   padding: 1rem 0;
   background-color: var(--primary-color);
@@ -66,4 +127,31 @@ footer {
 /* MEDIAQUERIES */
 /* Mobile */
 @media (600px > width) {
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .menu li {
+    width: 100%;
+    margin: 0;
+  }
+  .menu .active,
+  .menu li {
+    border-radius: unset;
+  }
+  .menu li a {
+    display: block;
+    padding: 0;
+  }
+}
+/* Desktop */
+@media (width > 1600px) {
+  body {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  header h1 {
+    margin-bottom: 1.5rem;
+  }
 }

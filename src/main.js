@@ -13,21 +13,41 @@ const $loader = document.querySelector(".loader");
 const $breedSelect = document.getElementById("breed");
 const $orderSelect = document.getElementById("order");
 
+document.addEventListener("DOMContentLoaded", () => {
+  cargarFiltroRaza();
+  cargarDatosYMostrar();
+}); //DOMContentLoaded ejecuta el codigo cuando el DOM esta listo
+
+//forEach porque son 2 botones dentro de $genBtn
+$genBtn.forEach((btn) => {
+  btn.addEventListener("click", () => cargarDatosYMostrar());
+});
+
+//Funcionalidad de los filtros
+$breedSelect.addEventListener("change", (event) => {
+  const val = event.target.value;
+  filtrar(FILTERS.RAZA, val);
+});
+$orderSelect.addEventListener("change", (event) => {
+  const val = event.target.value;
+  filtrar(FILTERS.ORDE, val);
+});
+
 function llenarContainer(data) {
   $dataCont.innerHTML = "";
   data.forEach((el) => {
     const article = document.createElement("article");
     article.innerHTML = `
-                <img src="${el.url}" alt="${el.id}" />
-                <div class="info">
-                  <h3>${el.breeds[0].name}</h3>
-                  <p><b>Origin:</b> ${el.breeds[0].origin}, ${el.breeds[0].country_code}</p>
-                  <p><b>Temperament: </b> ${el.breeds[0].temperament}</p>
-                  <p><b>Life span: </b>${el.breeds[0].life_span} years</p>
-                  <p>${el.breeds[0].description}</p>
-                  <p>&rarr; More info <a href="${el.breeds[0].wikipedia_url} " target="_blank">here</a></p>
-                </div>
-                `;
+      <img src="${el.url}" alt="${el.id}" />
+      <div class="info">
+        <h3>${el.breeds[0].name}</h3>
+        <p><b>Origin:</b> ${el.breeds[0].origin}, ${el.breeds[0].country_code}</p>
+        <p><b>Temperament: </b> ${el.breeds[0].temperament}</p>
+        <p><b>Life span: </b>${el.breeds[0].life_span} years</p>
+        <p>${el.breeds[0].description}</p>
+        <p id="info">&rarr; More info <a href="${el.breeds[0].wikipedia_url} " target="_blank">here</a></p>
+      </div>
+      `;
     $dataCont.appendChild(article);
   });
 }
@@ -46,21 +66,10 @@ async function cargarDatosYMostrar(url = cat_data_api) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  cargarFiltroRaza();
-  cargarDatosYMostrar();
-}); //DOMContentLoaded ejecuta el codigo cuando el DOM esta listo
-
-//forEach porque son 2 botones dentro de $genBtn
-$genBtn.forEach((btn) => {
-  btn.addEventListener("click", cargarDatosYMostrar);
-});
-
 //Cargar filter
 async function cargarFiltroRaza() {
   try {
     const data = await traerDatos(all_breeds_data);
-    console.log(data);
 
     data.forEach((raza) => {
       const opt = document.createElement("option");
@@ -76,15 +85,5 @@ async function cargarFiltroRaza() {
 //funcion del filter
 async function filtrar(filtro, value) {
   const url = filtrarBusqueda(filtro, value);
-  console.log(url);
   cargarDatosYMostrar(url);
 }
-
-$breedSelect.addEventListener("change", (event) => {
-  const val = event.target.value;
-  filtrar(FILTERS.RAZA, val);
-});
-$orderSelect.addEventListener("change", (event) => {
-  const val = event.target.value;
-  filtrar(FILTERS.ORDE, val);
-});
