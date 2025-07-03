@@ -15,7 +15,7 @@ const $orderSelect = document.getElementById("order");
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarFiltroRaza();
-  cargarDatosYMostrar("/api/data.js");
+  cargarDatosYMostrar("/api/data?");
 }); //DOMContentLoaded ejecuta el codigo cuando el DOM esta listo
 
 //forEach porque son 2 botones dentro de $genBtn
