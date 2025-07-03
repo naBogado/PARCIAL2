@@ -27,7 +27,7 @@ $breedSelect.addEventListener("change", (event) => {
   const queryString = new URLSearchParams(filtros).toString();
   console.log(queryString);
 
-  const url = `/api/data.js${queryString}`;
+  const url = `/api/data.js?${queryString}`;
 
   console.log(url);
 
@@ -70,6 +70,8 @@ async function cargarDatosYMostrar(url = "/api/data.js") {
     $loader.classList.remove("hidden"); //Mostrar loader
     $dataCont.innerHTML = "";
     const data = await traerDatos(url);
+    console.log(data);
+
     llenarContainer(data);
   } catch (error) {
     console.error("Error al traer datos", error);
