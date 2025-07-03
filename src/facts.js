@@ -43,6 +43,7 @@ function llenarFactContainer(imag, fact) {
 
 async function cargarFactYMostrar() {
   try {
+    $errorCont1.classList.add("hidden");
     $errorCont1.innerHTML = "";
     $loader1.classList.remove("hidden"); //Mostrar loader
     $factCont.innerHTML = "";
@@ -50,6 +51,7 @@ async function cargarFactYMostrar() {
     const { fact, imag } = await crearFact();
     llenarFactContainer(imag, fact);
   } catch (error) {
+    $errorCont2.classList.remove("hidden");
     mensajeError($errorCont1);
     console.error("Error al traer datos", error);
   } finally {
@@ -67,6 +69,7 @@ async function crearFact() {
 //Genera url y la añade al html
 async function generarImagenyMostrar(texto) {
   try {
+    $errorCont2.classList.add("hidden");
     $errorCont2.innerHTML = "";
     $imgCont.innerHTML = "";
     $loader2.classList.remove("hidden"); //Mostrar loader
@@ -75,6 +78,7 @@ async function generarImagenyMostrar(texto) {
     <img src="${imagUrl}" alt="Cat image generated">
     `;
   } catch (error) {
+    $errorCont2.classList.remove("hidden");
     mensajeError($errorCont2);
     console.error("Error al traer datos", error);
   } finally {
