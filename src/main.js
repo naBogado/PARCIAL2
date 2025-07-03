@@ -45,7 +45,6 @@ $orderSelect.addEventListener("change", (event) => {
 
 function llenarContainer(data) {
   $dataCont.innerHTML = "";
-  console.log(data);
 
   data.forEach((el) => {
     const article = document.createElement("article");
@@ -70,6 +69,8 @@ async function cargarDatosYMostrar(url) {
     $loader.classList.remove("hidden"); //Mostrar loader
     $dataCont.innerHTML = "";
     const data = await traerDatos(url);
+    console.log(data);
+
     llenarContainer(data);
   } catch (error) {
     console.error("Error al traer datos", error);
