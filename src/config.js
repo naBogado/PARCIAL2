@@ -1,9 +1,9 @@
+import { CAT_IMAGES_BACKEND } from "./config";
 //apis publicas
 export const cat_facts_api = "https://meowfacts.herokuapp.com/";
-export const cat_images_api =
-  "https://api.thecatapi.com/v1/images/search?limit=1&order=RAND&api_key=live_qpTsUtmtUZRa6s50Lo0unW0hpzk0PmP4R1xTaaUyYyNTGLSBeIv18oRJt4F5YDMX";
-export const cat_data_api =
-  "https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1&api_key=live_qpTsUtmtUZRa6s50Lo0unW0hpzk0PmP4R1xTaaUyYyNTGLSBeIv18oRJt4F5YDMX";
+export const cat_images_api = `${CAT_IMAGES_BACKEND}`;
+export const cat_data_api = `${CAT_IMAGES_BACKEND}`;
+export const CAT_IMAGES_BACKEND = "/api/data";
 
 export const all_breeds_data = "https://api.thecatapi.com/v1/breeds"; //links para traer todas las razas
 
@@ -11,7 +11,6 @@ export const all_breeds_data = "https://api.thecatapi.com/v1/breeds"; //links pa
 export const FILTERS = Object.freeze({
   RAZA: "RAZA",
   ORDE: "ORDEN",
-  IMAG: "IMAGENES",
 });
 
 export function generarUrlImagen(text) {
@@ -23,20 +22,17 @@ export function generarUrlImagen(text) {
 }
 //Genera los links para busquedas con filtros
 export function filtrarBusqueda(filtro, value) {
-  let nuevaURL =
-    "https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1&api_key=live_qpTsUtmtUZRa6s50Lo0unW0hpzk0PmP4R1xTaaUyYyNTGLSBeIv18oRJt4F5YDMX";
+  let nuevaURL = `${CAT_IMAGES_BACKEND}`;
   switch (filtro) {
     case FILTERS.RAZA: {
-      nuevaURL = `https://api.thecatapi.com/v1/images/search?has_breeds=1&breed_ids=${value}&api_key=live_qpTsUtmtUZRa6s50Lo0unW0hpzk0PmP4R1xTaaUyYyNTGLSBeIv18oRJt4F5YDMX`;
+      nuevaURL = `
+      ${CAT_IMAGES_BACKEND}?has_breeds=1&limit=10&breeds_ids=${value}`;
       return nuevaURL;
     }
     case FILTERS.ORDE: {
-      nuevaURL = `https://api.thecatapi.com/v1/images/search?has_breeds=1&order=${value}&limit=10&api_key=live_qpTsUtmtUZRa6s50Lo0unW0hpzk0PmP4R1xTaaUyYyNTGLSBeIv18oRJt4F5YDMX`;
+      nuevaURL = `
+      ${CAT_IMAGES_BACKEND}?has_breeds=1&limit=10&order=${value}`;
       return nuevaURL;
-    }
-    //para mostrar solo imagenes -> cambiaria los articles
-    case FILTERS.IMAG: {
-      nuevaURL = `https://api.thecatapi.com/v1/images/search?has_breeds=0&limit=10&api_key=live_qpTsUtmtUZRa6s50Lo0unW0hpzk0PmP4R1xTaaUyYyNTGLSBeIv18oRJt4F5YDM`;
     }
     default:
       return nuevaURL;
