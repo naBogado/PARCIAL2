@@ -1,5 +1,5 @@
 import { traerDatos } from "./getData";
-import { cat_images_api, cat_facts_api, generarUrlImagen } from "./config";
+import { cat_facts_api, generarUrlImagen } from "./config";
 import "./facts.css";
 
 const $genFactBtn = document.getElementById("genFact");
@@ -20,7 +20,7 @@ $genImageBtn.addEventListener("click", () => {
 
 //Mostrar una imagen cuando carga la pagina así no esta tan vacía
 document.addEventListener("DOMContentLoaded", async () => {
-  const imagen = await traerDatos(cat_images_api);
+  const imagen = await traerDatos("/api/data.js");
   const article = document.createElement("article");
   article.innerHTML = `
         <img src="${imagen[0].url}" alt="${imagen[0].id}" />
@@ -53,7 +53,7 @@ async function cargarFactYMostrar() {
 }
 
 async function crearFact() {
-  const imag = await traerDatos(cat_images_api);
+  const imag = await traerDatos("/api/data.js");
   const fact = await traerDatos(cat_facts_api);
   return { imag, fact };
 }
