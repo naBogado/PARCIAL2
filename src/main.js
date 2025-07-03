@@ -25,7 +25,10 @@ $breedSelect.addEventListener("change", (event) => {
   console.log(url);
 
   const queryString = new URLSearchParams(url).toString();
+  console.log(queryString);
+
   const urlFiltro = `/api/cat?${queryString}`;
+
   console.log(urlFiltro);
 
   cargarDatosYMostrar(urlFiltro);
