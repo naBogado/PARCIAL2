@@ -9,11 +9,12 @@
   <body>
     <header>
       <h1>Kittypedia</h1>
-      <div class="menu"></div>
+      <ul class="menu">
+        <li><a href="/index.html" class="active">CAT INFO</a></li>
+        <li><a href="/public/extra.html">CAT FACTS</a></li>
+      </ul>
     </header>
     <main>
-      <div id="resultado"></div>
-
       <section class="filter">
         <form action="">
           Filter by
@@ -36,10 +37,10 @@
         </form>
       </section>
       <div class="main-content">
-        <button class="genBtn">Generate 10 random</button>
+        <button class="genBtn">Generate 10 Random cats</button>
         <div class="loader hidden"></div>
         <section class="data"></section>
-        <button class="genBtn">Generate 10 random</button>
+        <button class="genBtn">Generate 10 Random cats</button>
       </div>
     </main>
     <footer>
