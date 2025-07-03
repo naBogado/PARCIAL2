@@ -22,14 +22,8 @@ $genBtn.forEach((btn) => {
 $breedSelect.addEventListener("change", (event) => {
   const val = event.target.value;
   const filtros = filtrarBusqueda(FILTERS.RAZA, val);
-  console.log(filtros);
-
   const queryString = new URLSearchParams(filtros).toString();
-  console.log(queryString);
-
   const url = `/api/data.js?${queryString}`;
-
-  console.log(url);
 
   cargarDatosYMostrar(url);
 });

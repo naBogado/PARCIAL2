@@ -65,8 +65,12 @@ main {
   margin: 1rem 0;
 }
 .img-gen .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 70rem;
   padding: 1rem;
+  color: #c0c0c0d8;
 }
 .img-gen .img img {
   width: 100%;
