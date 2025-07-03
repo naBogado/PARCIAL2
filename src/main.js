@@ -26,11 +26,25 @@ $genBtn.forEach((btn) => {
 //Funcionalidad de los filtros
 $breedSelect.addEventListener("change", (event) => {
   const val = event.target.value;
-  filtrar(FILTERS.RAZA, val);
+  const url = filtrarBusqueda(FILTERS.RAZA, val);
+  console.log(url);
+
+  const queryString = new URLSearchParams(url).toString();
+  const urlFiltro = `/api/cat?${queryString}`;
+  console.log(urlFiltro);
+
+  cargarDatosYMostrar(urlFiltro);
 });
 $orderSelect.addEventListener("change", (event) => {
   const val = event.target.value;
-  filtrar(FILTERS.ORDE, val);
+  const url = filtrarBusqueda(FILTERS.ORDE, val);
+  console.log(url);
+
+  const queryString = new URLSearchParams(url).toString();
+  const urlFiltro = `/api/cat?${queryString}`;
+  console.log(urlFiltro);
+
+  cargarDatosYMostrar(urlFiltro);
 });
 
 function llenarContainer(data) {
@@ -83,13 +97,4 @@ async function cargarFiltroRaza() {
 }
 
 //funcion del filter
-async function filtrar(filtro, value) {
-  const url = filtrarBusqueda(filtro, value);
-  console.log(url);
-
-  const queryString = new URLSearchParams(url).toString();
-  const urlFiltro = `/api/cat?${queryString}`;
-  console.log(urlFiltro);
-
-  cargarDatosYMostrar(urlFiltro);
-}
+async function filtrar(filtro, value) {}
