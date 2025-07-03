@@ -63,8 +63,8 @@ function llenarContainer(data) {
   });
 }
 
-async function cargarDatosYMostrar(url) {
-  //con este parametro cat_data_api va a ser la url default / si le paso otra usa la nueva
+async function cargarDatosYMostrar(url = "/api/data.js") {
+  //con este parametro /api/data va a ser la url default / si le paso otra usa la nueva
   try {
     $loader.classList.remove("hidden"); //Mostrar loader
     $dataCont.innerHTML = "";
