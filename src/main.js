@@ -45,7 +45,6 @@ $orderSelect.addEventListener("change", (event) => {
 
 function llenarContainer(data) {
   $dataCont.innerHTML = "";
-
   data.forEach((el) => {
     const article = document.createElement("article");
     article.innerHTML = `
@@ -92,6 +91,3 @@ async function cargarFiltroRaza() {
     console.error("Error al cargar razas:", error);
   }
 }
-
-//funcion del filter
-async function filtrar(filtro, value) {}
