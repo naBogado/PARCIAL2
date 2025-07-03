@@ -45,6 +45,8 @@ $orderSelect.addEventListener("change", (event) => {
 
 function llenarContainer(data) {
   $dataCont.innerHTML = "";
+  console.log(data);
+
   data.forEach((el) => {
     const article = document.createElement("article");
     article.innerHTML = `
