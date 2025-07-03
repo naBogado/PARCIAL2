@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const apiKey = process.env.CAT_API_KEY;
-  const baseUrl = `https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1&order=RAND&api_key=${apiKey}`;
+  const baseUrl = `https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1&api_key=${apiKey}`;
 
   const params = new URLSearchParams(req.query);
   params.append("api_key", apiKey);
