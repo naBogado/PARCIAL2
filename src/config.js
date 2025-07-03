@@ -1,10 +1,6 @@
 import { CAT_IMAGES_BACKEND } from "./config";
 //apis publicas
 export const cat_facts_api = "https://meowfacts.herokuapp.com/";
-export const cat_images_api = `${CAT_IMAGES_BACKEND}`;
-export const cat_data_api = `${CAT_IMAGES_BACKEND}`;
-export const CAT_IMAGES_BACKEND = "/api/data";
-
 export const all_breeds_data = "https://api.thecatapi.com/v1/breeds"; //links para traer todas las razas
 
 //Enum para evitar strings
@@ -20,6 +16,7 @@ export function generarUrlImagen(text) {
     return `https://cataas.com/cat/says/${text}`;
   }
 }
+/*
 //Genera los links para busquedas con filtros
 export function filtrarBusqueda(filtro, value) {
   let nuevaURL = `${CAT_IMAGES_BACKEND}`;
@@ -37,4 +34,23 @@ export function filtrarBusqueda(filtro, value) {
     default:
       return nuevaURL;
   }
+}
+
+*/
+export function filtrarBusqueda(filtro, value) {
+  const filtros = {
+    has_breeds: 1,
+    limit: 10,
+  };
+
+  switch (filtro) {
+    case FILTERS.RAZA:
+      filtros.breed_ids = value;
+      break;
+    case FILTERS.ORDE:
+      filtros.order = value;
+      break;
+  }
+
+  return filtros; // Solo devuelvo el objeto filtros
 }

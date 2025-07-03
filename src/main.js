@@ -52,7 +52,7 @@ function llenarContainer(data) {
   });
 }
 
-async function cargarDatosYMostrar(url = cat_data_api) {
+async function cargarDatosYMostrar(url) {
   //con este parametro cat_data_api va a ser la url default / si le paso otra usa la nueva
   try {
     $loader.classList.remove("hidden"); //Mostrar loader
@@ -85,5 +85,7 @@ async function cargarFiltroRaza() {
 //funcion del filter
 async function filtrar(filtro, value) {
   const url = filtrarBusqueda(filtro, value);
-  cargarDatosYMostrar(url);
+  const queryString = new URLSearchParams(url).toString();
+  const urlFiltro = `/api/cat?${queryString}`;
+  cargarDatosYMostrar(urlFiltro);
 }
