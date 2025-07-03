@@ -67,6 +67,7 @@ function llenarContainer(data) {
 async function cargarDatosYMostrar(url = "/api/data.js") {
   //con este parametro /api/data va a ser la url default / si le paso otra usa la nueva
   try {
+    $errorCont.innerHTML = "";
     $loader.classList.remove("hidden"); //Mostrar loader
     $dataCont.innerHTML = "";
     const data = await traerDatos(url);

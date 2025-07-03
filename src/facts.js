@@ -43,6 +43,7 @@ function llenarFactContainer(imag, fact) {
 
 async function cargarFactYMostrar() {
   try {
+    $errorCont1.innerHTML = "";
     $loader1.classList.remove("hidden"); //Mostrar loader
     $factCont.innerHTML = "";
     //desestructurizo el objeto que me trae
@@ -66,6 +67,7 @@ async function crearFact() {
 //Genera url y la añade al html
 async function generarImagenyMostrar(texto) {
   try {
+    $errorCont2.innerHTML = "";
     $imgCont.innerHTML = "";
     $loader2.classList.remove("hidden"); //Mostrar loader
     const imagUrl = await generarUrlImagen(texto); //me trae link de una imagen
