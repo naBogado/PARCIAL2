@@ -10,13 +10,12 @@ const $orderSelect = document.getElementById("order");
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarFiltroRaza();
-  console.log("/api/data.js");
   cargarDatosYMostrar("/api/data?");
 }); //DOMContentLoaded ejecuta el codigo cuando el DOM esta listo
 
 //forEach porque son 2 botones dentro de $genBtn
 $genBtn.forEach((btn) => {
-  btn.addEventListener("click", cargarDatosYMostrar);
+  btn.addEventListener("click", () => cargarDatosYMostrar("/api/data?"));
 });
 
 //Funcionalidad de los filtros
