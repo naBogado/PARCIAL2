@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //forEach porque son 2 botones dentro de $genBtn
 $genBtn.forEach((btn) => {
-  btn.addEventListener("click", () => cargarDatosYMostrar());
+  btn.addEventListener("click", cargarDatosYMostrar);
 });
 
 //Funcionalidad de los filtros
@@ -69,8 +69,6 @@ async function cargarDatosYMostrar(url = "/api/data.js") {
     $loader.classList.remove("hidden"); //Mostrar loader
     $dataCont.innerHTML = "";
     const data = await traerDatos(url);
-    console.log(data);
-
     llenarContainer(data);
   } catch (error) {
     console.error("Error al traer datos", error);
