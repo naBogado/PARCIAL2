@@ -8,6 +8,7 @@ export const FILTERS = Object.freeze({
   ORDE: "ORDEN",
 });
 
+//Genera url de imagen con texto
 export function generarUrlImagen(text) {
   if (!text) {
     return "https://cataas.com/cat/says/i%C2%B4m%20a%20cute%20cat"; //esta raro por los espacios en blanco
@@ -15,27 +16,8 @@ export function generarUrlImagen(text) {
     return `https://cataas.com/cat/says/${text}`;
   }
 }
-/*
-//Genera los links para busquedas con filtros
-export function filtrarBusqueda(filtro, value) {
-  let nuevaURL = `${CAT_IMAGES_BACKEND}`;
-  switch (filtro) {
-    case FILTERS.RAZA: {
-      nuevaURL = `
-      ${CAT_IMAGES_BACKEND}?has_breeds=1&limit=10&breeds_ids=${value}`;
-      return nuevaURL;
-    }
-    case FILTERS.ORDE: {
-      nuevaURL = `
-      ${CAT_IMAGES_BACKEND}?has_breeds=1&limit=10&order=${value}`;
-      return nuevaURL;
-    }
-    default:
-      return nuevaURL;
-  }
-}
 
-*/
+//Crea objeto con los filtros para busqueda
 export function filtrarBusqueda(filtro, value) {
   const filtros = {
     limit: 10,
@@ -51,5 +33,5 @@ export function filtrarBusqueda(filtro, value) {
       break;
   }
 
-  return filtros; // Solo devuelvo el objeto filtros
+  return filtros;
 }

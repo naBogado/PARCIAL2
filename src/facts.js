@@ -1,6 +1,7 @@
 import { traerDatos } from "./getData";
 import { cat_facts_api, generarUrlImagen } from "./config";
 import "./facts.css";
+import { mensajeError } from "./errorMessage";
 
 const $genFactBtn = document.getElementById("genFact");
 const $factCont = document.querySelector(".fact-container");
@@ -9,6 +10,8 @@ const $loader2 = document.querySelector(".loader2");
 const $imgCont = document.querySelector(".img");
 const $genImageBtn = document.querySelector("#genImage");
 const $textareaText = document.getElementById("text-inp");
+const $errorCont1 = document.querySelector(".err-msg1");
+const $errorCont2 = document.querySelector(".err-msg2");
 
 //Funcionalidad de los botones
 $genFactBtn.addEventListener("click", cargarFactYMostrar);
@@ -18,7 +21,7 @@ $genImageBtn.addEventListener("click", () => {
   generarImagenyMostrar(texto);
 });
 
-//Mostrar una imagen cuando carga la pagina así no esta tan vacía
+//Mostrar una imagen cuando carga la pagina asi no está tan vacía
 document.addEventListener("DOMContentLoaded", async () => {
   const imagen = await traerDatos("/api/data.js");
   const article = document.createElement("article");
@@ -46,18 +49,21 @@ async function cargarFactYMostrar() {
     const { fact, imag } = await crearFact();
     llenarFactContainer(imag, fact);
   } catch (error) {
+    mensajeError($errorCont1);
     console.error("Error al traer datos", error);
   } finally {
     $loader1.classList.add("hidden"); //Esconder loader una vez llegan los datos
   }
 }
 
+//Genera el fact junto con la imagen
 async function crearFact() {
   const imag = await traerDatos("/api/data.js");
   const fact = await traerDatos(cat_facts_api);
   return { imag, fact };
 }
 
+//Genera url y la añade al html
 async function generarImagenyMostrar(texto) {
   try {
     $imgCont.innerHTML = "";
@@ -66,8 +72,8 @@ async function generarImagenyMostrar(texto) {
     $imgCont.innerHTML = `
     <img src="${imagUrl}" alt="Cat image generated">
     `;
-    //mostrar
   } catch (error) {
+    mensajeError($errorCont2);
     console.error("Error al traer datos", error);
   } finally {
     $loader2.classList.add("hidden"); //Esconder loader una vez llegan los datos

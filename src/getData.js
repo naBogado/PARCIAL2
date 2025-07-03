@@ -1,4 +1,4 @@
-//FUNCION PARA HACER FETCH EN LA API QUE RECIBA (PUBLICA)
+//FUNCION PARA HACER FETCH EN LA API QUE RECIBA
 export async function traerDatos(url) {
   try {
     const res = await fetch(url);

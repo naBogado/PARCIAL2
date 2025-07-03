@@ -75,6 +75,10 @@ main {
   min-height: 90vh;
   margin: 0.5rem;
 }
+h4 {
+  text-align: center;
+  color: var(--dark-color);
+}
 button {
   margin: 0.5rem 0;
   font-weight: 600;

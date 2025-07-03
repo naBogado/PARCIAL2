@@ -1,12 +1,14 @@
 import { traerDatos } from "./getData";
 import { all_breeds_data, FILTERS, filtrarBusqueda } from "./config";
 import "./index.css";
+import { mensajeError } from "./errorMessage";
 
 const $dataCont = document.querySelector(".data");
 const $genBtn = document.querySelectorAll(".genBtn");
 const $loader = document.querySelector(".loader");
 const $breedSelect = document.getElementById("breed");
 const $orderSelect = document.getElementById("order");
+const $errorCont = document.querySelector(".err-msg");
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarFiltroRaza();
@@ -41,6 +43,7 @@ $orderSelect.addEventListener("change", (event) => {
   cargarDatosYMostrar(url);
 });
 
+//crear articles para la info
 function llenarContainer(data) {
   $dataCont.innerHTML = "";
   data.forEach((el) => {
@@ -60,6 +63,7 @@ function llenarContainer(data) {
   });
 }
 
+//trae datos, y los muestra en el index
 async function cargarDatosYMostrar(url = "/api/data.js") {
   //con este parametro /api/data va a ser la url default / si le paso otra usa la nueva
   try {
@@ -70,6 +74,7 @@ async function cargarDatosYMostrar(url = "/api/data.js") {
 
     llenarContainer(data);
   } catch (error) {
+    mensajeError($errorCont);
     console.error("Error al traer datos", error);
   } finally {
     $loader.classList.add("hidden"); //Esconder loader una vez llegan los datos
