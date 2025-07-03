@@ -38,8 +38,8 @@ export function filtrarBusqueda(filtro, value) {
 */
 export function filtrarBusqueda(filtro, value) {
   const filtros = {
+    limit: 10,
     has_breeds: 1,
-    limit: 15,
   };
 
   switch (filtro) {
