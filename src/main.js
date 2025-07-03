@@ -85,7 +85,11 @@ async function cargarFiltroRaza() {
 //funcion del filter
 async function filtrar(filtro, value) {
   const url = filtrarBusqueda(filtro, value);
+  console.log(url);
+
   const queryString = new URLSearchParams(url).toString();
   const urlFiltro = `/api/cat?${queryString}`;
+  console.log(urlFiltro);
+
   cargarDatosYMostrar(urlFiltro);
 }
