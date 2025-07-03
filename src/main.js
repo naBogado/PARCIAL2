@@ -1,10 +1,5 @@
 import { traerDatos } from "./getData";
-import {
-  all_breeds_data,
-  cat_data_api,
-  FILTERS,
-  filtrarBusqueda,
-} from "./config";
+import { all_breeds_data, FILTERS, filtrarBusqueda } from "./config";
 import "./index.css";
 
 const $dataCont = document.querySelector(".data");
@@ -15,6 +10,7 @@ const $orderSelect = document.getElementById("order");
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarFiltroRaza();
+  console.log("/api/data.js");
   cargarDatosYMostrar("/api/data?");
 }); //DOMContentLoaded ejecuta el codigo cuando el DOM esta listo
 
@@ -66,7 +62,7 @@ function llenarContainer(data) {
   });
 }
 
-async function cargarDatosYMostrar(url = "/api/data.js") {
+async function cargarDatosYMostrar(url) {
   //con este parametro cat_data_api va a ser la url default / si le paso otra usa la nueva
   try {
     $loader.classList.remove("hidden"); //Mostrar loader
