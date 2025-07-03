@@ -31,7 +31,7 @@ $breedSelect.addEventListener("change", (event) => {
 
   console.log(urlFiltro);
 
-  cargarDatosYMostrar(urlFiltro);
+  cargarDatosYMostrar(queryString);
 });
 $orderSelect.addEventListener("change", (event) => {
   const val = event.target.value;
