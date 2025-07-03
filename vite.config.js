@@ -6,13 +6,13 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        extra: resolve(__dirname, "extra.html"),
+        public: resolve(__dirname, "/public/extra.html"),
       },
     },
   },
   server: {
     proxy: {
-      "/api": "http://localhost:3001", // Solo para desarrollo local
+      "/api": "http://localhost:3001", //solo para desarrollo local
     },
   },
 });
